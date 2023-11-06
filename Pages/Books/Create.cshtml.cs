@@ -53,7 +53,7 @@ namespace Nicolaie_Andreea_Lab2.Pages.Books
             Book.BookCategories = newBook.BookCategories;
             _context.Book.Add(Book);
             await _context.SaveChangesAsync();
-            return RedirectToPage("Books/Index");
+            return RedirectToPage("./Index");
         }
     }
 }

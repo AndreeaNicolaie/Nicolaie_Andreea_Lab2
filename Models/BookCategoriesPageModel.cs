@@ -49,7 +49,9 @@ namespace Nicolaie_Andreea_Lab2.Models
                 {
                     if (bookCategories.Contains(cat.ID))
                     {
-                        BookCategory courseToRemove = bookToUpdate.BookCategories.SingleOrDefault(i => i.CategoryID == cat.ID);
+                        BookCategory courseToRemove = bookToUpdate
+                            .BookCategories
+                            .SingleOrDefault(i => i.CategoryID == cat.ID);
                         context.Remove(courseToRemove);
                     }
                 }

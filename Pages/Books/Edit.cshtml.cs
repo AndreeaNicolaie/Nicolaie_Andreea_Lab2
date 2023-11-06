@@ -29,7 +29,12 @@ namespace Nicolaie_Andreea_Lab2.Pages.Books
             {
                 return NotFound();
             }
-            Book = await _context.Book.Include(b => b.Publisher).Include(b => b.BookCategories).ThenInclude(b => b.Category).AsNoTracking().FirstOrDefaultAsync(m => m.ID == id);
+            Book = await _context.Book
+                .Include(b => b.Publisher)
+                .Include(b => b.BookCategories)
+                .ThenInclude(b => b.Category)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
 
             var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
@@ -50,7 +55,12 @@ namespace Nicolaie_Andreea_Lab2.Pages.Books
             {
                 return NotFound();
             }
-            var bookToUpdate = await _context.Book.Include(i => i.Publisher).Include(i => i.BookCategories).ThenInclude(i => i.Category).FirstOrDefaultAsync(s => s.ID == id);
+            var bookToUpdate = await _context.Book
+                .Include(i => i.Publisher)
+                .Include(i => i.BookCategories)
+                .ThenInclude(i => i.Category)
+                .FirstOrDefaultAsync(s => s.ID == id);
+
             if (bookToUpdate == null)
             {
                 return NotFound();

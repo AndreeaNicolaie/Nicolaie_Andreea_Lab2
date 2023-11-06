@@ -15,11 +15,23 @@ namespace Nicolaie_Andreea_Lab2.Data
         }
 
         public DbSet<Nicolaie_Andreea_Lab2.Models.Book> Book { get; set; } = default!;
+        public DbSet<Nicolaie_Andreea_Lab2.Models.Borrowing> Borrowings { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Book>()
+                .HasOne(b => b.Borrowing)
+                .WithOne(b => b.Book)
+                .HasForeignKey<Borrowing>(b => b.BookID);
+        }
 
         public DbSet<Nicolaie_Andreea_Lab2.Models.Publisher>? Publisher { get; set; }
 
         public DbSet<Nicolaie_Andreea_Lab2.Models.Author>? Author { get; set; }
 
         public DbSet<Nicolaie_Andreea_Lab2.Models.Category>? Category { get; set; }
+
+        public DbSet<Nicolaie_Andreea_Lab2.Models.Member>? Member { get; set; }
     }
 }
